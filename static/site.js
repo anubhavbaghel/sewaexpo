@@ -257,7 +257,10 @@
 
         formData.append("subject", "SEWA Expo " + pageName + " Enquiry");
 
-        fetch("/send-mail.php", {
+        var scriptSrc = document.currentScript.src;
+        var basePath = scriptSrc.substring(0, scriptSrc.indexOf("static/"));
+
+        fetch(basePath + "send-mail.php", {
           method: "POST",
           body: formData
         })

@@ -50,7 +50,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 $fields = [];
 foreach ($_POST as $key => $value) {
-    if (in_array($key, ['name', 'email', 'subject'])) continue;
+    if (in_array($key, ['name', 'email', 'subject', 'cf-turnstile-response'])) continue;
     if (!empty($value)) {
         $fields[] = [
             'label' => ucfirst($key),

@@ -264,7 +264,21 @@
           method: "POST",
           body: formData
         })
-          .then(function (response) { return response.json(); })
+          .then(function (response) {
+            if (!response.ok) {
+              return response.text().then(function (text) {
+                var msg = "Server error (HTTP " + response.status + ")";
+                try {
+                  var data = JSON.parse(text);
+                  msg = data.message || msg;
+                } catch (e) {
+                  if (text && text.length < 200) msg = text;
+                }
+                throw new Error(msg);
+              });
+            }
+            return response.json();
+          })
           .then(function (data) {
             status.classList.remove("hidden");
             if (data.success) {
@@ -276,10 +290,18 @@
               status.innerHTML = "<div class='flex flex-col items-center gap-3'><svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='#dc2626' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'></circle><line x1='15' y1='9' x2='9' y2='15'></line><line x1='9' y1='9' x2='15' y2='15'></line></svg><p class='text-lg font-bold text-red-800'>Oops!</p><p class='text-sm text-red-700'>" + (data.message || "Something went wrong.") + "</p></div>";
             }
           })
-          .catch(function () {
+          .catch(function (error) {
             status.classList.remove("hidden");
             status.className = "mt-6 p-6 rounded-xl border-2 border-red-200 bg-red-50 text-center";
-            status.innerHTML = "<div class='flex flex-col items-center gap-3'><svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='#dc2626' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'></circle><line x1='12' y1='8' x2='12' y2='12'></line><line x1='12' y1='16' x2='12.01' y2='16'></line></svg><p class='text-lg font-bold text-red-800'>Connection Error</p><p class='text-sm text-red-700'>Failed to send. Please check your internet and try again.</p></div>";
+            var errorMsg = error && error.message ? error.message : "";
+            if (errorMsg.indexOf("404") !== -1) {
+              status.innerHTML = "<div class='flex flex-col items-center gap-3'><svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='#dc2626' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'></circle><line x1='12' y1='8' x2='12' y2='12'></line><line x1='12' y1='16' x2='12.01' y2='16'></line></svg><p class='text-lg font-bold text-red-800'>Form Not Found</p><p class='text-sm text-red-700'>The server could not find the form handler. Please contact us directly.</p></div>";
+            } else if (errorMsg.indexOf("CAPTCHA") !== -1) {
+              status.innerHTML = "<div class='flex flex-col items-center gap-3'><svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='#dc2626' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'></circle><line x1='12' y1='8' x2='12' y2='12'></line><line x1='12' y1='16' x2='12.01' y2='16'></line></svg><p class='text-lg font-bold text-red-800'>CAPTCHA Error</p><p class='text-sm text-red-700'>Please complete the verification and try again.</p></div>";
+            } else {
+              status.innerHTML = "<div class='flex flex-col items-center gap-3'><svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='#dc2626' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'></circle><line x1='12' y1='8' x2='12' y2='12'></line><line x1='12' y1='16' x2='12.01' y2='16'></line></svg><p class='text-lg font-bold text-red-800'>Submission Failed</p><p class='text-sm text-red-700'>" + (errorMsg || "An unexpected error occurred. Please try again or contact us directly.") + "</p></div>";
+            }
+            console.error("Form submission error:", error);
           })
           .finally(function () {
             submitButton.disabled = false;

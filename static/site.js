@@ -242,10 +242,9 @@
       }
 
       form.addEventListener("submit", function (event) {
-        var subject;
-        var lines = [];
         var pageName = window.location.pathname.indexOf("/registration/") !== -1 ? "Registration" : "Contact";
-        var mailtoLink;
+        var formData = new FormData(form);
+        var originalText = submitButton.textContent;
 
         if (!form.reportValidity()) {
           return;
@@ -253,57 +252,37 @@
 
         event.preventDefault();
 
-        Array.prototype.forEach.call(form.elements, function (field) {
-          var label;
-          var value;
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+        status.classList.add("hidden");
 
-          if (!field || field.disabled || !("value" in field)) {
-            return;
-          }
+        formData.append("subject", "SEWA Expo " + pageName + " Enquiry");
 
-          if (field.type === "submit" || field.type === "button" || field.type === "fieldset") {
-            return;
-          }
-
-          if ((field.type === "checkbox" || field.type === "radio") && !field.checked) {
-            return;
-          }
-
-          value = normalizeText(field.value);
-          if (!value) {
-            return;
-          }
-
-          label =
-            normalizeText(
-              field.closest("div") &&
-                field.closest("div").querySelector("label") &&
-                field.closest("div").querySelector("label").textContent
-            ) ||
-            normalizeText(field.getAttribute("aria-label")) ||
-            normalizeText(field.placeholder) ||
-            normalizeText(field.name) ||
-            normalizeText(field.id) ||
-            "Field";
-
-          lines.push(label.replace(/\*+$/, "").trim() + ": " + value);
-        });
-
-        subject = "SEWA Expo " + pageName + " enquiry";
-        mailtoLink =
-          "mailto:sewaexpo50plus@gmail.com?subject=" +
-          encodeURIComponent(subject) +
-          "&body=" +
-          encodeURIComponent(lines.join("\n"));
-
-        status.classList.remove("hidden");
-        status.innerHTML =
-          "<strong>Details captured.</strong> This static build is ready for deployment, but the form is not connected to a backend yet. " +
-          'You can use <a class="font-semibold underline underline-offset-4" href="' +
-          mailtoLink +
-          '">this email draft</a> or wire the form to your server/API later.';
-
-        form.reset();
+        fetch("send-mail.php", {
+          method: "POST",
+          body: formData
+        })
+          .then(function (response) { return response.json(); })
+          .then(function (data) {
+            status.classList.remove("hidden");
+            if (data.success) {
+              status.className = "mt-4 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm leading-relaxed text-green-800";
+              status.innerHTML = "<strong>Success!</strong> " + data.message;
+              form.reset();
+            } else {
+              status.className = "mt-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm leading-relaxed text-red-800";
+              status.innerHTML = "<strong>Error:</strong> " + (data.message || "Something went wrong.");
+            }
+          })
+          .catch(function () {
+            status.classList.remove("hidden");
+            status.className = "mt-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm leading-relaxed text-red-800";
+            status.innerHTML = "<strong>Error:</strong> Failed to send. Please try again.";
+          })
+          .finally(function () {
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+          });
       });
     });
   }

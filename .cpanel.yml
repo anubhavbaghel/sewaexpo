@@ -3,5 +3,12 @@ deployment:
   tasks:
     - export DEPLOYPATH=$HOME/public_html/
     - /bin/cp -R * $DEPLOYPATH
+    - /bin/cp -R _next $DEPLOYPATH
+    - /bin/cp -R static $DEPLOYPATH
+    - /bin/cp -R about $DEPLOYPATH
+    - /bin/cp -R contact $DEPLOYPATH
+    - /bin/cp -R registration $DEPLOYPATH
+    - /bin/cp -R visitor $DEPLOYPATH
+    - /bin/cp -R exhibition $DEPLOYPATH
     - /bin/cp .htaccess $DEPLOYPATH
     - /bin/cp send-mail.php $DEPLOYPATH

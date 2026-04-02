@@ -257,7 +257,7 @@
 
         formData.append("subject", "SEWA Expo " + pageName + " Enquiry");
 
-        fetch("send-mail.php", {
+        fetch("/send-mail.php", {
           method: "POST",
           body: formData
         })

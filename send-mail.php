@@ -14,6 +14,24 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+$turnstileSecret = 'YOUR_TURNSTILE_SECRET_KEY';
+$turnstileToken = isset($_POST['cf-turnstile-response']) ? $_POST['cf-turnstile-response'] : '';
+
+$verify = curl_init();
+curl_setopt($verify, CURLOPT_URL, 'https://challenges.cloudflare.com/turnstile/v0/siteverify');
+curl_setopt($verify, CURLOPT_POST, true);
+curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query(['secret' => $turnstileSecret, 'response' => $turnstileToken]));
+curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
+$response = curl_exec($verify);
+curl_close($verify);
+$responseData = json_decode($response, true);
+
+if (!isset($responseData['success']) || $responseData['success'] !== true) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => 'CAPTCHA verification failed. Please try again.']);
+    exit;
+}
+
 $name = isset($_POST['name']) ? trim($_POST['name']) : '';
 $email = isset($_POST['email']) ? trim($_POST['email']) : '';
 $subject = isset($_POST['subject']) ? trim($_POST['subject']) : 'New SEWA Expo Enquiry';

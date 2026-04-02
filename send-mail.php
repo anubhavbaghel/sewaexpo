@@ -86,8 +86,7 @@ $message = "
             </tr>
             <tr>
                 <td style='padding:0 40px 32px;color:#9ca3af;font-size:12px;text-align:center'>
-                    <p style='margin:0'>Received on {$timestamp}</p>
-                    <p style='margin:8px 0 0'>SEWA Expo 2026 | Empowering Golden Years</p>
+                    <p style='margin:0'>SEWA Expo 2026 | Empowering Golden Years</p>
                 </td>
             </tr>
         </table>

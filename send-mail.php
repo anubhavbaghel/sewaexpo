@@ -2,6 +2,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+require 'config.php';
 require 'PHPMailer-master/src/Exception.php';
 require 'PHPMailer-master/src/PHPMailer.php';
 require 'PHPMailer-master/src/SMTP.php';
@@ -14,13 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$turnstileSecret = 'YOUR_TURNSTILE_SECRET_KEY';
 $turnstileToken = isset($_POST['cf-turnstile-response']) ? $_POST['cf-turnstile-response'] : '';
 
 $verify = curl_init();
 curl_setopt($verify, CURLOPT_URL, 'https://challenges.cloudflare.com/turnstile/v0/siteverify');
 curl_setopt($verify, CURLOPT_POST, true);
-curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query(['secret' => $turnstileSecret, 'response' => $turnstileToken]));
+curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query(['secret' => TURNSTILE_SECRET, 'response' => $turnstileToken]));
 curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
 $response = curl_exec($verify);
 curl_close($verify);
@@ -120,7 +120,7 @@ try {
     $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
     $mail->Username   = 'connect@sewaexpo.com';
-    $mail->Password   = 'YOUR_APP_PASSWORD';
+    $mail->Password   = SMTP_APP_PASSWORD;
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port       = 587;
 

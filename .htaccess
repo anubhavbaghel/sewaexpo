@@ -1,6 +1,9 @@
 # Enable clean URLs
 DirectoryIndex index.html index.php
 
+# Custom error pages
+ErrorDocument 404 /404.html
+
 # Route all requests to index.html for SPA-like behavior (optional)
 # Uncomment if needed for custom routing
 # RewriteEngine On

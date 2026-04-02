@@ -1,4 +1,7 @@
 (function () {
+  var scriptEl = document.currentScript;
+  var basePath = scriptEl ? scriptEl.src.substring(0, scriptEl.src.indexOf("static/")) : "";
+
   function ready(callback) {
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", callback, { once: true });
@@ -256,9 +259,6 @@
         status.classList.add("hidden");
 
         formData.append("subject", "SEWA Expo " + pageName + " Enquiry");
-
-        var scriptSrc = document.currentScript.src;
-        var basePath = scriptSrc.substring(0, scriptSrc.indexOf("static/"));
 
         fetch(basePath + "send-mail.php", {
           method: "POST",

@@ -1,4 +1,3 @@
-// Test commit - safe to remove
 (function () {
   function ready(callback) {
     if (document.readyState === "loading") {

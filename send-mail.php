@@ -28,16 +28,71 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-$message = "<h2>SEWA Expo Enquiry</h2>";
-$message .= "<p><strong>Name:</strong> " . htmlspecialchars($name) . "</p>";
-$message .= "<p><strong>Email:</strong> " . htmlspecialchars($email) . "</p>";
-
+$fields = [];
 foreach ($_POST as $key => $value) {
     if (in_array($key, ['name', 'email', 'subject'])) continue;
     if (!empty($value)) {
-        $message .= "<p><strong>" . ucfirst(htmlspecialchars($key)) . ":</strong> " . htmlspecialchars(trim($value)) . "</p>";
+        $fields[] = [
+            'label' => ucfirst($key),
+            'value' => htmlspecialchars(trim($value))
+        ];
     }
 }
+
+$rows = '';
+foreach ($fields as $i => $field) {
+    $bg = $i % 2 === 0 ? '#f9fafb' : '#ffffff';
+    $rows .= "<tr style='background:{$bg}'>
+        <td style='padding:12px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;color:#374151;width:160px'>{$field['label']}</td>
+        <td style='padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#111827'>{$field['value']}</td>
+    </tr>";
+}
+
+$timestamp = date('F j, Y \a\t g:i A');
+
+$message = "
+<!DOCTYPE html>
+<html>
+<head><meta charset='utf-8'></head>
+<body style='margin:0;padding:0;background:#f3f4f6;font-family:Arial,sans-serif'>
+<table width='100%' cellpadding='0' cellspacing='0' style='padding:40px 0;background:#f3f4f6'>
+    <tr><td align='center'>
+        <table width='600' cellpadding='0' cellspacing='0' style='background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08)'>
+            <tr>
+                <td style='background:linear-gradient(135deg,#1a4d3e 0%,#2c5f52 100%);padding:32px 40px;text-align:center'>
+                    <h1 style='margin:0;color:#ffffff;font-size:24px;letter-spacing:1px'>SEWA EXPO 2026</h1>
+                    <p style='margin:8px 0 0;color:#d4a574;font-size:14px;letter-spacing:2px;text-transform:uppercase'>New Enquiry Received</p>
+                </td>
+            </tr>
+            <tr>
+                <td style='padding:32px 40px 24px'>
+                    <table width='100%' cellpadding='0' cellspacing='0' style='border:1px solid #e5e7eb;border-radius:8px;overflow:hidden'>
+                        <tr style='background:#1a4d3e'>
+                            <td colspan='2' style='padding:12px 16px;color:#ffffff;font-weight:600;font-size:14px'>Contact Details</td>
+                        </tr>
+                        <tr style='background:#f9fafb'>
+                            <td style='padding:12px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;color:#374151;width:160px'>Name</td>
+                            <td style='padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#111827'>" . htmlspecialchars($name) . "</td>
+                        </tr>
+                        <tr>
+                            <td style='padding:12px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;color:#374151'>Email</td>
+                            <td style='padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#111827'><a href='mailto:" . htmlspecialchars($email) . "' style='color:#1a4d3e;text-decoration:none'>" . htmlspecialchars($email) . "</a></td>
+                        </tr>
+                        {$rows}
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style='padding:0 40px 32px;color:#9ca3af;font-size:12px;text-align:center'>
+                    <p style='margin:0'>Received on {$timestamp}</p>
+                    <p style='margin:8px 0 0'>SEWA Expo 2026 | Empowering Golden Years</p>
+                </td>
+            </tr>
+        </table>
+    </td></tr>
+</table>
+</body>
+</html>";
 
 $mail = new PHPMailer(true);
 
@@ -52,6 +107,7 @@ try {
 
     $mail->setFrom('connect@sewaexpo.com', 'SEWA Expo');
     $mail->addAddress('anubhav.diinfotech@gmail.com');
+    $mail->addCC('karan.kumar@diinfotech.com');
     $mail->addReplyTo($email, $name);
 
     $mail->isHTML(true);

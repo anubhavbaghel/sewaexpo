@@ -1,5 +1,5 @@
 # Enable clean URLs
-DirectoryIndex index.html index.php
+DirectoryIndex index.php index.html
 
 # Custom error pages
 ErrorDocument 404 /404.html

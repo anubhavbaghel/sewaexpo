@@ -5,4 +5,5 @@ $pageDescription = "India's Pioneering Exhibition for 50+ Enrichment & Wellness.
 include 'header.php';
 ?>
 <?php include 'index-content.php'; ?>
+<?php include 'index-next-scripts.php'; ?>
 <?php include 'footer.php'; ?>

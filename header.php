@@ -22,6 +22,7 @@
     <link rel="icon" href="<?= $root ?>sewa-logo.svg" />
     <link rel="apple-touch-icon" href="<?= $root ?>sewa-logo.svg" />
     <script src="<?= $root ?>_next/static/chunks/a6dad97d9634a72d.js" noModule=""></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body style="--font-sans:&#x27;Poppins&#x27;, Arial, sans-serif;--font-serif:&#x27;Merriweather&#x27;, Georgia, serif"

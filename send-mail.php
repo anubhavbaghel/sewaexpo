@@ -125,8 +125,8 @@ try {
     $mail->Port       = 587;
 
     $mail->setFrom('connect@sewaexpo.com', 'SEWA Expo');
-    $mail->addAddress('anubhav.diinfotech@gmail.com');
-    // $mail->addCC('karan.kumar@diinfotech.com');
+    $mail->addAddress('network@sewaexpo.com');
+    $mail->addCC('karan.kumar@diinfotech.com');
     $mail->addReplyTo($email, $name);
 
     $mail->isHTML(true);

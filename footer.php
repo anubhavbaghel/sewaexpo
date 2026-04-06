@@ -69,7 +69,7 @@
                     <div>
                         <h4 class="text-sm font-sans uppercase tracking-wider font-semibold text-white mb-6">Contact
                             Info</h4>
-                        <div class="space-y-4"><a href="mailto:sewaexpo50plus@gmail.com"
+                        <div class="space-y-4"><a href="mailto:network@sewaexpo.com"
                                 class="flex items-start gap-3 group cursor-pointer"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

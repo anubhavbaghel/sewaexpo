@@ -113,8 +113,8 @@
                                 </div>
                                 <div>
                                     <h3 class="font-bold text-[#1A4D3E] mb-2">Email</h3><a
-                                        href="mailto:sewaexpo50plus@gmail.com"
-                                        class="text-[#1A4D3E]/70 hover:text-[#D4A574] transition-colors block">sewaexpo50plus@gmail.com</a>
+                                        href="mailto:connect@sewaexpo.com"
+                                        class="text-[#1A4D3E]/70 hover:text-[#D4A574] transition-colors block">connect@sewaexpo.com</a>
                                 </div>
                             </div>
                             <div class="flex gap-4 group">

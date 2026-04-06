@@ -150,7 +150,7 @@ try {
             $autoReply->setFrom('connect@sewaexpo.com', 'SEWA EXPO');
             $autoReply->addAddress($email);
             $autoReply->isHTML(true);
-            $autoReply->Subject = 'Welcome to SEWA EXPO - Registration Confirmed';
+            $autoReply->Subject = 'Welcome to SEWA EXPO';
 
             $autoReplyBody = "<!DOCTYPE html>
 <html>
@@ -162,7 +162,6 @@ try {
             <tr>
                 <td style='background:linear-gradient(135deg,#1a4d3e 0%,#2c5f52 100%);padding:32px 40px;text-align:center'>
                     <h1 style='margin:0;color:#ffffff;font-size:24px;letter-spacing:1px'>SEWA EXPO 2026</h1>
-                    <p style='margin:8px 0 0;color:#d4a574;font-size:14px;letter-spacing:2px;text-transform:uppercase'>Registration Confirmed</p>
                 </td>
             </tr>
             <tr>

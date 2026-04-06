@@ -2,7 +2,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'config.php';
+require '../config.php';
 require 'PHPMailer-master/src/Exception.php';
 require 'PHPMailer-master/src/PHPMailer.php';
 require 'PHPMailer-master/src/SMTP.php';
@@ -125,7 +125,7 @@ try {
     $mail->Port       = 587;
 
     $mail->setFrom('connect@sewaexpo.com', 'SEWA Expo');
-    $mail->addAddress('anubhav.diinfotech@gmail.com');
+    $mail->addAddress('network@sewaexpo.com');
     $mail->addCC('karan.kumar@diinfotech.com');
     $mail->addReplyTo($email, $name);
 

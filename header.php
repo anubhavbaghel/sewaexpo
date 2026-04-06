@@ -69,9 +69,9 @@ if ($currentPath === '/' || $currentPath === '\\' || $currentPath === '.') $curr
                             href="<?= $root ?>contact/">Contact<span
                                 class="absolute bottom-0 left-0 h-0.5 bg-[#D4A574] transition-all duration-300 <?= $currentPath === 'contact' ? 'w-full' : 'w-0 group-hover:w-full' ?>"></span></a>
                     </div>
-                    <div class="hidden md:flex gap-3"><a href="<?= $root ?>brochure.pdf" download><button
-                                class="bg-[#D4A574] text-[#0F1419] px-4 py-2.5 rounded-lg text-sm font-sans font-medium tracking-wide hover:bg-[#E67E3B] transition-colors duration-300 cursor-pointer">Brochure</button></a><a href="<?= $root ?>registration/"><button
-                                class="border-2 border-[#1A4D3E] text-[#1A4D3E] px-6 py-2.5 rounded-lg text-sm font-sans font-medium tracking-wide hover:bg-[#1A4D3E] hover:text-white transition-colors duration-300 cursor-pointer">Register</button></a>
+                    <div class="hidden md:flex gap-3"><a href="<?= $root ?>registration/"><button
+                                class="border-2 border-[#1A4D3E] text-[#1A4D3E] px-6 py-2.5 rounded-lg text-sm font-sans font-medium tracking-wide hover:bg-[#1A4D3E] hover:text-white transition-colors duration-300 cursor-pointer">Register</button></a><a href="<?= $root ?>brochure.pdf" download><button
+                                class="bg-[#D4A574] text-[#0F1419] px-4 py-2.5 rounded-lg text-sm font-sans font-medium tracking-wide hover:bg-[#E67E3B] transition-colors duration-300 cursor-pointer">Brochure</button></a>
                     </div><button class="md:hidden text-[#1A4D3E]"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu w-6 h-6">

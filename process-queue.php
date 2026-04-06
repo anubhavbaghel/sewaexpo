@@ -125,7 +125,6 @@ foreach ($queue as $item) {
         $autoReply->Body = $autoReplyBody;
         $autoReply->AltBody = strip_tags($autoReplyBody);
         $autoReply->send();
-        echo "Sent auto-reply to $email\n";
     } catch (Exception $e) {
         error_log("Auto-reply failed for $email: " . $e->getMessage());
     }

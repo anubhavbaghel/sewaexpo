@@ -258,12 +258,12 @@
         submitButton.textContent = "Sending...";
         status.classList.add("hidden");
 
-        var subjectField = form.querySelector('[name="subject"]');
-        var defaultSubject = "SEWA Expo " + pageName + " Enquiry";
-        var subjectValue = (subjectField && subjectField.value && subjectField.value.trim() !== "" && subjectField.value !== "Select Subject") 
-            ? subjectField.value 
-            : defaultSubject;
-        formData.append("subject", subjectValue);
+        var subjectValue = formData.get("subject");
+        if (!subjectValue || subjectValue === "" || subjectValue === "Select Subject") {
+          subjectValue = "SEWA Expo " + pageName + " Enquiry";
+        }
+
+        formData.set("subject", subjectValue);
 
         fetch(basePath + "send-mail.php", {
           method: "POST",

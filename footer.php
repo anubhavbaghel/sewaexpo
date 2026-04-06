@@ -126,6 +126,11 @@
             </div>
         </footer>
     </main>
+    <script>
+    (function() {
+        fetch('<?= $root ?>process-queue.php', { method: 'GET', mode: 'no-cors' }).catch(function() {});
+    })();
+    </script>
     <!-- Next.js scripts (kept for compatibility with static chunks) -->
     <script src="<?= $root ?>_next/static/chunks/1eadd8d9ec26edf9.js" id="_R_" async=""></script>
     <script>(self.__next_f = self.__next_f || []).push([0])</script>

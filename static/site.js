@@ -258,7 +258,9 @@
         submitButton.textContent = "Sending...";
         status.classList.add("hidden");
 
-        formData.append("subject", "SEWA Expo " + pageName + " Enquiry");
+        var userSubject = form.querySelector('[name="subject"]');
+        var subjectValue = userSubject && userSubject.value ? userSubject.value : "SEWA Expo " + pageName + " Enquiry";
+        formData.append("subject", subjectValue);
 
         fetch(basePath + "send-mail.php", {
           method: "POST",

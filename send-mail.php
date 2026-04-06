@@ -136,6 +136,8 @@ try {
 
     $mail->send();
 
+    sleep(30);
+
     if (!empty($email)) {
         $autoReply = new PHPMailer(true);
         try {

@@ -80,7 +80,7 @@
                                 </svg>
                                 <div class="text-sm">
                                     <p class="text-white/80 group-hover:text-white transition-colors">
-                                        sewaexpo50plus@gmail.com</p>
+                                        network@sewaexpo.com</p>
                                 </div>
                             </a><a href="tel:+919899026061" class="flex items-start gap-3 group cursor-pointer"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"

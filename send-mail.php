@@ -136,6 +136,25 @@ try {
 
     $mail->send();
 
+    // Phase A/B: respond to user immediately after admin email succeeds
+    $response = json_encode(['success' => true, 'message' => 'Thank you! Your details have been submitted.']);
+    if (!headers_sent()) {
+        header('Content-Type: application/json');
+        header('Content-Length: ' . strlen($response));
+        header('Connection: close');
+    }
+    echo $response;
+    if (function_exists('fastcgi_finish_request')) {
+        fastcgi_finish_request();
+    } else {
+        if (ob_get_level()) ob_end_flush();
+        flush();
+    }
+
+    // Phase C: background work (after response)
+    ignore_user_abort(true);
+    set_time_limit(60);
+
     sleep(30);
 
     if (!empty($email)) {

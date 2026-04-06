@@ -71,6 +71,7 @@
                                         value="" /></div>
                             </div>
                             <div><label class="block text-sm font-medium text-[#1A4D3E] mb-2">Subject *</label><select
+                                    name="subject"
                                     class="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1A4D3E] text-[#1A4D3E]"
                                     required="">
                                     <option value="" selected="">Select Subject</option>

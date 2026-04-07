@@ -113,7 +113,7 @@
                                 </div>
                                 <div>
                                     <h3 class="font-bold text-[#1A4D3E] mb-2">Email</h3><a
-                                        href="mailto:connect@sewaexpo.com"
+                                        href="mailto:network@sewaexpo.com"
                                         class="text-[#1A4D3E]/70 hover:text-[#D4A574] transition-colors block">connect@sewaexpo.com</a>
                                 </div>
                             </div>

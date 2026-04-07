@@ -136,7 +136,7 @@ try {
 
     $mail->send();
 
-    // Phase A/B: respond to user immediately after admin email succeeds
+    // Respond to the browser immediately after admin mail succeeds.
     $response = json_encode(['success' => true, 'message' => 'Thank you! Your details have been submitted.']);
     if (!headers_sent()) {
         header('Content-Type: application/json');
@@ -144,6 +144,7 @@ try {
         header('Connection: close');
     }
     echo $response;
+
     if (function_exists('fastcgi_finish_request')) {
         fastcgi_finish_request();
     } else {
@@ -151,7 +152,6 @@ try {
         flush();
     }
 
-    // Phase C: background work (after response)
     ignore_user_abort(true);
     set_time_limit(60);
 
@@ -258,7 +258,6 @@ try {
         }
     }
 
-    echo json_encode(['success' => true, 'message' => 'Thank you! Your details have been submitted.']);
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode(['success' => false, 'message' => 'Failed to send. Please try again.']);

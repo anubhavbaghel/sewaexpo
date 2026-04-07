@@ -290,7 +290,6 @@
               status.className = "mt-6 p-6 rounded-xl border-2 border-green-200 bg-green-50 text-center";
               status.innerHTML = "<div class='flex flex-col items-center gap-3'><svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='#16a34a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M22 11.08V12a10 10 0 1 1-5.93-9.14'></path><polyline points='22 4 12 14.01 9 11.01'></polyline></svg><p class='text-lg font-bold text-green-800'>Thank You!</p><p class='text-sm text-green-700'>" + data.message + "</p><p class='text-xs text-green-600 mt-1'>We will get back to you shortly.</p></div>";
               form.reset();
-              fetch(basePath + "process-queue.php", { method: "GET" }).catch(function() {});
             } else {
               status.className = "mt-6 p-6 rounded-xl border-2 border-red-200 bg-red-50 text-center";
               status.innerHTML = "<div class='flex flex-col items-center gap-3'><svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='#dc2626' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'></circle><line x1='15' y1='9' x2='9' y2='15'></line><line x1='9' y1='9' x2='15' y2='15'></line></svg><p class='text-lg font-bold text-red-800'>Oops!</p><p class='text-sm text-red-700'>" + (data.message || "Something went wrong.") + "</p></div>";

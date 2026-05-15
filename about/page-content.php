@@ -110,7 +110,7 @@
             </div>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-gradient-to-br from-[#1A4D3E]/5 to-[#D4A574]/10 rounded-xl border border-[#1A4D3E]/20 overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                    <img src="../assets/WhatsApp%20Image%202026-05-15%20at%2012.30.26%20PM.jpeg" alt="Rachna Jain, Advocate and Senior Partner at Desai &amp; Diwanji" class="w-full object-cover" style="height:360px;object-position:center top" />
+                    <img src="../assets/WhatsApp%20Image%202026-05-15%20at%2012.30.26%20PM.jpeg" alt="Rachna Jain, Advocate and Senior Partner at Desai &amp; Diwanji" class="w-full bg-[#F8F5F1]" style="height:clamp(420px,56vw,680px);object-fit:contain" />
                     <div class="p-6">
                         <p class="text-[#D4A574] text-sm font-semibold uppercase tracking-wider mb-2">Knowledge Partner</p>
                         <h4 class="text-2xl font-bold text-[#1A4D3E] mb-2">Rachna Jain</h4>
@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 <div class="bg-gradient-to-br from-[#1A4D3E]/5 to-[#D4A574]/10 rounded-xl border border-[#1A4D3E]/20 overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                    <img src="../assets/WhatsApp%20Image%202026-05-15%20at%2012.30.27%20PM%20%281%29.jpeg" alt="Nikhil Singla, Advocate, High Court of Delhi" class="w-full object-cover" style="height:360px;object-position:center top" />
+                    <img src="../assets/WhatsApp%20Image%202026-05-15%20at%2012.30.27%20PM%20%281%29.jpeg" alt="Nikhil Singla, Advocate, High Court of Delhi" class="w-full bg-[#F8F5F1]" style="height:clamp(420px,56vw,680px);object-fit:contain" />
                     <div class="p-6">
                         <p class="text-[#D4A574] text-sm font-semibold uppercase tracking-wider mb-2">Knowledge Partner</p>
                         <h4 class="text-2xl font-bold text-[#1A4D3E] mb-2">Nikhil Singla</h4>
@@ -137,7 +137,7 @@
             </div>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-gradient-to-br from-[#1A4D3E]/5 to-[#D4A574]/10 rounded-xl border border-[#1A4D3E]/20 overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                    <img src="../assets/WhatsApp%20Image%202026-05-15%20at%2012.30.28%20PM.jpeg" alt="Dr. Archit Goyal, Orthopaedics and Spine Surgery Specialist" class="w-full object-cover" style="height:360px;object-position:center top" />
+                    <img src="../assets/WhatsApp%20Image%202026-05-15%20at%2012.30.28%20PM.jpeg" alt="Dr. Archit Goyal, Orthopaedics and Spine Surgery Specialist" class="w-full bg-[#F8F5F1]" style="height:clamp(420px,56vw,680px);object-fit:contain" />
                     <div class="p-6">
                         <p class="text-[#D4A574] text-sm font-semibold uppercase tracking-wider mb-2">Healthcare Expert</p>
                         <h4 class="text-2xl font-bold text-[#1A4D3E] mb-2">Dr. Archit Goyal</h4>
@@ -170,7 +170,7 @@
             </div>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-gradient-to-br from-[#1A4D3E]/5 to-[#D4A574]/10 rounded-xl border border-[#1A4D3E]/20 overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                    <img src="../assets/WhatsApp%20Image%202026-05-15%20at%2012.30.27%20PM.jpeg" alt="Varun Goyal, Bharat Vikas Parishad IPEX" class="w-full object-cover" style="height:360px;object-position:center top" />
+                    <img src="../assets/WhatsApp%20Image%202026-05-15%20at%2012.30.27%20PM.jpeg" alt="Varun Goyal, Bharat Vikas Parishad IPEX" class="w-full bg-[#F8F5F1]" style="height:clamp(420px,56vw,680px);object-fit:contain" />
                     <div class="p-6">
                         <p class="text-[#D4A574] text-sm font-semibold uppercase tracking-wider mb-2">Supporting Member</p>
                         <h4 class="text-2xl font-bold text-[#1A4D3E] mb-2">Varun Goyal</h4>
